@@ -1,0 +1,20 @@
+.header-context {
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.Site-logo {
+    height: 50px;
+    pointer-events: none;
+    margin-left: 30px;
+    margin-top: 15px;
+  }
+
+.app-header {
+    background-color: #282c34;
+    align-items: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+  }
