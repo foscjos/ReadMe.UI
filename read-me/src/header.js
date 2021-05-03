@@ -17,14 +17,14 @@ const Header = () => {
     const headerContext = () => {
         if (user) {
             return (
-                <div>
-                    <h1>Welcome, {user.name}</h1>
+                <span className="header-authed">
+                    <h1 className="welcome-message">Welcome, {user.name}</h1>
                     <GoogleLogout
                         clientId={env.clientId}
                         buttonText="Logout"
                         onLogoutSuccess={logout}
                         />
-                </div>
+                </span>
             )
         } else {
             return(
@@ -33,6 +33,7 @@ const Header = () => {
                         clientId={env.clientId} 
                         buttonText="Login" onSuccess={responseGoogle} 
                         onFailure={responseGoogle}
+                        isSignedIn={true}
                         />
                 </div>
             );

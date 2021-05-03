@@ -1,6 +1,16 @@
 .header-context {
     margin-right: 30px;
     margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-authed {
+  display: flex;
+}
+
+.welcome-message {
+  margin-right: 15px;
 }
 
 .Site-logo {
