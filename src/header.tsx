@@ -1,17 +1,25 @@
 import React,  { useState } from 'react';
 import siteLogo from './assets/siteLogo.svg';
-import { GoogleLogout, GoogleLogin } from 'react-google-login';
+import { GoogleLogout, GoogleLogin, GoogleLoginResponse } from 'react-google-login';
 import './header.css';
 const env = require('./environment/environment');
 
 const Header = () => {
-    const [user, setUser] = useState();
-    const responseGoogle = (response) => {
+    const [user, setUser] = useState<GoogleLoginResponse["profileObj"]>();
+    const loginSuccess = (response: any) => {
         console.log(response);
-        setUser(response.profileObj);
+        if (response && response.profileObj) {
+            setUser(response.profileObj);
+        }
     };
+
+    const loginFail = (error: any) => {
+        console.log('Login failed with following message');
+        console.log(error);
+    }
+    
     const logout = () => {
-        setUser(null);
+        setUser(undefined);
     }
 
     const headerContext = () => {
@@ -31,8 +39,8 @@ const Header = () => {
                 <div>
                     <GoogleLogin
                         clientId={env.clientId} 
-                        buttonText="Login" onSuccess={responseGoogle} 
-                        onFailure={responseGoogle}
+                        buttonText="Login" onSuccess={loginSuccess} 
+                        onFailure={loginFail}
                         isSignedIn={true}
                         />
                 </div>
